@@ -22,13 +22,16 @@
     return _webpack_require('./src/index.js');
 })({
     './src/index.js': function(module, exports, _webpack_require) {
-        console.log('index module');
-        const a = _webpack_require('./src/a.js');
-        console.log(a);
-        const b = _webpack_require('./src/a.js');
+        // console.log('index module');
+        // const a = _webpack_require('./src/a.js');
+        // console.log(a);
+        // const b = _webpack_require('./src/a.js');
+        //使用eval是为了触发浏览器调试时，显示路径为./src/index.js,方便调试-----> //# sourceURL=webpack://demo3/./src/index.js?
+        eval("console.log(\'index module\')\nconst a = _webpack_require(\'./src/a.js\')\nconsole.log(a)\nconst b = _webpack_require(\'./src/a.js\')//# sourceURL=webpack://demo1/./src/index.js?")
     },
     './src/a.js': function(module, exports) {
-        console.log('module a');
-        module.exports = 'a';
+        // console.log('module a');
+        // module.exports = 'a';
+        eval("console.log(\'module a\')\nmodule.exports = \'a\'//# sourceURL=webpack://demo1/./src/a.js?")
     }
 })
